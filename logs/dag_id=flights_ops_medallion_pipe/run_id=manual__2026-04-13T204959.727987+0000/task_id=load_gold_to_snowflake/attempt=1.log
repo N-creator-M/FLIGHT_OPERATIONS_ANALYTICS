@@ -1,0 +1,64 @@
+[2026-04-13T20:50:19.355+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-13T20:50:19.387+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flights_ops_medallion_pipe.load_gold_to_snowflake manual__2026-04-13T20:49:59.727987+00:00 [queued]>
+[2026-04-13T20:50:19.394+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flights_ops_medallion_pipe.load_gold_to_snowflake manual__2026-04-13T20:49:59.727987+00:00 [queued]>
+[2026-04-13T20:50:19.395+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-13T20:50:19.407+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_gold_to_snowflake> on 2026-04-13 20:49:59.727987+00:00
+[2026-04-13T20:50:19.414+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', '***_ops_medallion_pipe', 'load_gold_to_snowflake', 'manual__2026-04-13T20:49:59.727987+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/***_pipline.py', '--cfg-path', '/tmp/tmpd1pueia5']
+[2026-04-13T20:50:19.417+0000] {standard_task_runner.py:91} INFO - Job 31: Subtask load_gold_to_snowflake
+[2026-04-13T20:50:19.417+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=847) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-04-13T20:50:19.418+0000] {standard_task_runner.py:64} INFO - Started process 857 to run task
+[2026-04-13T20:50:19.481+0000] {task_command.py:426} INFO - Running <TaskInstance: flights_ops_medallion_pipe.load_gold_to_snowflake manual__2026-04-13T20:49:59.727987+00:00 [running]> on host 0841da137e0f
+[2026-04-13T20:50:19.576+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='***_ops_medallion_pipe' AIRFLOW_CTX_TASK_ID='load_gold_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-04-13T20:49:59.727987+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-13T20:49:59.727987+00:00'
+[2026-04-13T20:50:19.578+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-13T20:50:19.624+0000] {base.py:84} INFO - Using connection ID 'flight_snowflake' for task execution.
+[2026-04-13T20:50:19.625+0000] {connection.py:408} INFO - Snowflake Connector for Python Version: 3.11.0, Python Version: 3.12.4, Platform: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2026-04-13T20:50:19.626+0000] {connection.py:1258} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2026-04-13T20:50:23.189+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-13T20:50:23.190+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/load_gold_to_snowflake.py", line 22, in run_gold_to_snowflake
+    sf_conn = snowflake.connector.connect(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/__init__.py", line 55, in Connect
+    return SnowflakeConnection(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 451, in __init__
+    self.connect(**kwargs)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 756, in connect
+    self.__open_connection()
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1084, in __open_connection
+    self.authenticate_with_retry(self.auth_class)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1364, in authenticate_with_retry
+    self._authenticate(auth_instance)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1392, in _authenticate
+    auth.authenticate(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/auth/_auth.py", line 401, in authenticate
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 348, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.DatabaseError: 250001 (08001): None: Failed to connect to DB: uc64138.europe-west2.gcp.snowflakecomputing.com:443. Incorrect username or password was specified.
+[2026-04-13T20:50:23.206+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=***_ops_medallion_pipe, task_id=load_gold_to_snowflake, run_id=manual__2026-04-13T20:49:59.727987+00:00, execution_date=20260413T204959, start_date=20260413T205019, end_date=20260413T205023
+[2026-04-13T20:50:23.219+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 31 for task load_gold_to_snowflake (250001 (08001): None: Failed to connect to DB: uc64138.europe-west2.gcp.snowflakecomputing.com:443. Incorrect username or password was specified.; 857)
+[2026-04-13T20:50:23.259+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-13T20:50:23.276+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-13T20:50:23.278+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

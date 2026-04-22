@@ -1,0 +1,18 @@
+[2026-04-13T19:55:39.405+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-13T19:55:39.448+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flights_ops_medallion_pipe.gold_file manual__2026-04-13T19:55:24.305731+00:00 [queued]>
+[2026-04-13T19:55:39.460+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flights_ops_medallion_pipe.gold_file manual__2026-04-13T19:55:24.305731+00:00 [queued]>
+[2026-04-13T19:55:39.462+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-13T19:55:39.479+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): gold_file> on 2026-04-13 19:55:24.305731+00:00
+[2026-04-13T19:55:39.491+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', '***_ops_medallion_pipe', 'gold_file', 'manual__2026-04-13T19:55:24.305731+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/***_pipline.py', '--cfg-path', '/tmp/tmpto3iun_b']
+[2026-04-13T19:55:39.495+0000] {standard_task_runner.py:91} INFO - Job 18: Subtask gold_file
+[2026-04-13T19:55:39.498+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=488) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-04-13T19:55:39.499+0000] {standard_task_runner.py:64} INFO - Started process 497 to run task
+[2026-04-13T19:55:39.554+0000] {task_command.py:426} INFO - Running <TaskInstance: flights_ops_medallion_pipe.gold_file manual__2026-04-13T19:55:24.305731+00:00 [running]> on host 0841da137e0f
+[2026-04-13T19:55:39.636+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='***_ops_medallion_pipe' AIRFLOW_CTX_TASK_ID='gold_file' AIRFLOW_CTX_EXECUTION_DATE='2026-04-13T19:55:24.305731+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-13T19:55:24.305731+00:00'
+[2026-04-13T19:55:39.639+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-13T19:55:39.754+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-04-13T19:55:39.755+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-13T19:55:39.764+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=***_ops_medallion_pipe, task_id=gold_file, run_id=manual__2026-04-13T19:55:24.305731+00:00, execution_date=20260413T195524, start_date=20260413T195539, end_date=20260413T195539
+[2026-04-13T19:55:39.799+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-04-13T19:55:39.816+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-13T19:55:39.819+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
